@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Security-Policy" content="connect-src 'self' https://hammerhead-app-oj2sm.ondigitalocean.app; script-src 'unsafe-inline' 'self'">
+  <title>Tetris Whitelist Application</title>
+  <style>
+  .info,.link{color:#ff6000}body,button{color:#fff;font-family:VT323,monospace}.link,button{cursor:pointer}button,button:hover{background-color:#ff6000}body{background-size:cover;background-color:#000;margin:0;display:flex;justify-content:center;align-items:center;height:100vh}.container{max-width:500px;padding:20px}.hidden,.screen{display:none}.mt10{margin-top:10px}.active{display:block}h1{font-size:30px;margin-bottom:20px}.info,p{margin-bottom:10px}p{font-size:18px}a{text-decoration:none}.info{font-size:20px}.link{font-size:16px}input[type=half],input[type=text],textarea{width:80%;padding:10px;margin-bottom:20px;font-family:VT323,monospace;font-size:16px}.checkmark{background-color:#ff6000!important}.error{border:2px solid red}button{padding:10px 20px;border:none;font-size:18px}
+  </style>
+</head>
+
+  <body>
+  <!-- Step 1 -->
+  <div id="step1" class="screen active container">
+    <img src="https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FVfUN0wPNU7HDuo9Euq33%2Fuploads%2FSxDTJeXlbiPvHiC05I3m%2Fsprite_1-big.png?alt=media" alt="Logo">
+    <h1>WhiteList Application</h1>
+    <p>Get access to the first ever P2E game on Ordinals. </p>
+    <p class="link">Step 1: Enter your ordinals wallet address</p>
+    <input type="text" id="input1" placeholder="bc1...">
+    <button onclick="validateStep1()">Continue</button>
+    <br><br>
+    <p><a class="link" target="_blank" href="https://unisat.io/brc20/OTET">Buy $OTET</a> | <a class="link" target="_blank" href="https://twitter.com/Ordinal_Tetris">Twitter</a></p>
+  </div>
+
+
+  <!-- Step 2 -->
+  <div id="step2" class="screen container">
+    <img src="https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FVfUN0wPNU7HDuo9Euq33%2Fuploads%2FSxDTJeXlbiPvHiC05I3m%2Fsprite_1-big.png?alt=media" alt="Logo">
+    <h1>WhiteList Application</h1>
+    <p>Own a Tetromino Ordinals; Play Tetris and earn $OTET</p>
+    <p class="link">Step 2: Enter your Twitter username</p>
+    <input type="text" id="input2" placeholder="@">
+    <button onclick="validateStep2()">Next</button>
+    <br><br>
+    <p><a class="link" target="_blank" href="https://unisat.io/brc20/OTET">Buy $OTET</a> | <a class="link" target="_blank" href="https://twitter.com/Ordinal_Tetris">Twitter</a></p>
+  </div>
+
+  <!-- Step 3 -->
+  <div id="step3" class="screen container">
+    <img src="https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FVfUN0wPNU7HDuo9Euq33%2Fuploads%2FSxDTJeXlbiPvHiC05I3m%2Fsprite_1-big.png?alt=media" alt="Logo">
+    <h1>$OTET Airdrops + Free Mints</h1>
+    <p>We are hand-picking members for airdrops for $OTET and Free tetrominoes.</p><p> Upvote this inscription and Tweet your application to be considered.</p>
+    <p class="link">Step 3: Upvote + Tweet</p>
+    <input type="checkbox" class="checkmark" id="myCheckbox" name="myCheckbox">
+    <label for="myCheckbox">I have upvoted this inscription</label>
+    <div><button class="mt10" onclick="generateURL()">Click to generate Tweet Link </button></div>
+    <textarea id="tweetLink" class="tweetArea mt10" rows="5" cols="50" readonly class="mt10"></textarea>
+
+    <br><br>
+    <p><a class="link" target="_blank" href="https://unisat.io/brc20/OTET">Buy $OTET</a> | <a class="link" target="_blank" href="https://twitter.com/Ordinal_Tetris">Twitter</a></p>
+  </div>
+
+  <!-- Step 4 -->
+  <div id="step4" class="screen container">
+    <img src="https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FVfUN0wPNU7HDuo9Euq33%2Fuploads%2FSxDTJeXlbiPvHiC05I3m%2Fsprite_1-big.png?alt=media" alt="Logo">
+    <h1>Submitted</h1>
+    <p class="link">We will review and reply to your Tweet if your application is considered.</p>
+    <p>Follow us on Twitter and switch on notifications.</p>
+    <br><br>
+    <p><a class="link" target="_blank" href="https://unisat.io/brc20/OTET">Buy $OTET</a> | <a class="link" target="_blank" href="https://twitter.com/Ordinal_Tetris">Twitter</a></p>
+  </div>
+
+  <script>
+   function nextStep() {
+      document.getElementById("step1").classList.remove("active");
+      document.getElementById("step1").classList.add("hidden");
+      document.getElementById("step2").classList.add("active");
+    }
+    function validateStep1() {
+      var input1 = document.getElementById("input1").value;
+      if (input1.trim() !== "") {
+        document.getElementById("step1").classList.remove("active");
+        document.getElementById("step1").classList.add("hidden");
+        document.getElementById("step2").classList.add("active");
+      } else {
+        if (input1.trim() === "") {
+          document.getElementById("input1").classList.add("error");
+        }
+      }
+    }
+
+    function validateStep2() {
+      var input1 = document.getElementById("input1").value;
+      var input2 = document.getElementById("input2").value;
+      if (input1.trim() !== "" && input2.trim() !== "") {
+        document.getElementById("step2").classList.remove("active");
+        document.getElementById("step2").classList.add("hidden");
+        document.getElementById("step3").classList.add("active");
+      } else {
+        if (input1.trim() === "") {
+          document.getElementById("input1").classList.add("error");
+        }
+        if (input2.trim() === "") {
+          document.getElementById("input2").classList.add("error");
+        }
+      }
+    }
+
+    async  function generateURL() {
+      const walletAddress = document.getElementById("input1").value
+      try{
+      const response = await fetch(
+      "http://localhost:8080/WL/WLCheckerinscriptionURL",
+      {
+        method:"GET"
+      }
+      )
+      const WLinscriptionURL = await response.json();
+      const tweetURL = "https://twitter.com/intent/tweet?text=" + encodeURI(`Applied for @Ordinal_Tetris whitelist at ${WLinscriptionURL}`) + "%0A%0A" + encodeURI(`Participate and Upvote this inscription to enter $OTET airdrops.`) + "%0A%0A" + encodeURI("My address is: " + walletAddress) + "%0A%0A"
+
+     const textArea = document.getElementById("tweetLink")
+     textArea.value = tweetURL;
+     
+    } catch(error) {
+      console.log(error.message);
+    }
+
+    }
+  </script>
+  </body>
+</html>
